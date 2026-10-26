@@ -1,0 +1,23 @@
+.contadores {
+  margin-bottom: 10px;
+}
+
+.emprestimo {
+  border: 1px solid #aaa;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.status-aberto {
+  background-color: yellow;
+}
+
+.status-devolvido {
+  background-color: lightgreen;
+}
+
+button {
+  padding: 4px;
+  font-size: 13px;
+  margin-right: 5px;
+}

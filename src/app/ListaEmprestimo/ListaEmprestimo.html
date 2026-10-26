@@ -1,0 +1,69 @@
+<div class="lista">
+
+  <h2>Empréstimos</h2>
+
+  <div class="contadores">
+    <p>Total: {{ totalEmprestimos() }}</p>
+    <p>Em aberto: {{ totalEmAberto() }}</p>
+    <p>Devolvidos: {{ totalDevolvidos() }}</p>
+  </div>
+
+  <p *ngIf="emprestimoService.listar().length === 0">
+    Nenhum empréstimo cadastrado
+  </p>
+
+  <div
+    class="emprestimo"
+    *ngFor="let emprestimo of emprestimoService.listar()"
+  >
+
+    <p>
+      <strong>Pessoa:</strong>
+      {{ emprestimo.nomePessoa }}
+    </p>
+
+    <p>
+      <strong>Livro:</strong>
+      {{ emprestimo.tituloLivro }}
+    </p>
+
+    <p>
+      <strong>Data prevista:</strong>
+      {{ emprestimo.dataPrevistaDevolucao }}
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+
+      <span
+        class="status-aberto"
+        *ngIf="!emprestimo.devolvido"
+      >
+        Em aberto
+      </span>
+
+      <span
+        class="status-devolvido"
+        *ngIf="emprestimo.devolvido"
+      >
+        Devolvido
+      </span>
+
+    </p>
+
+    <button
+      (click)="registrarDevolucao(emprestimo.id)"
+      [disabled]="emprestimo.devolvido"
+    >
+      Registrar devolução
+    </button>
+
+    <button
+      (click)="remover(emprestimo.id)"
+    >
+      Remover
+    </button>
+
+  </div>
+
+</div>
